@@ -37,7 +37,19 @@ public class NumberBox : Wpf.Ui.Controls.TextBox
     /// Property for <see cref="Value"/>.
     /// </summary>
     public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value),
-        typeof(double), typeof(NumberBox), new PropertyMetadata(0.0d));
+        typeof(double), typeof(NumberBox), new FrameworkPropertyMetadata()
+        {
+            DefaultValue = 0.0d,
+            BindsTwoWayByDefault = true,
+            PropertyChangedCallback = new PropertyChangedCallback(ValuePropertyChanged)
+        });
+
+    private static void ValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var numberBox = (NumberBox)d;
+        numberBox.Value = (double)e.NewValue;
+        numberBox.Text = e.NewValue.ToString();
+    }
 
     /// <summary>
     /// Property for <see cref="Step"/>.
@@ -436,7 +448,6 @@ public class NumberBox : Wpf.Ui.Controls.TextBox
         // Do not allow a leading minus sign if the min value is greater than zero.
         if (Min >= 0 && newText.StartsWith("-"))
             e.Handled = true;
-
 
         base.OnPreviewTextInput(e);
     }

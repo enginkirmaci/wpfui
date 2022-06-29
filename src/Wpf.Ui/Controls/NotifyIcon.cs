@@ -50,7 +50,7 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
     /// </summary>
     internal Interop.Shell32.NOTIFYICONDATA ShellIconData { get; set; }
 
-    #endregion
+    #endregion Internal variables
 
     #region Public variables
 
@@ -73,7 +73,7 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
     /// <inheritdoc />
     public IntPtr ParentHandle { get; set; }
 
-    #endregion
+    #endregion Public variables
 
     #region Properties
 
@@ -169,7 +169,7 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
         set => SetValue(MenuFontSizeProperty, value);
     }
 
-    #endregion
+    #endregion Properties
 
     #region Events
 
@@ -269,7 +269,7 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
         remove => RemoveHandler(MiddleDoubleClickEvent, value);
     }
 
-    #endregion
+    #endregion Events
 
     #region General methods
 
@@ -280,7 +280,6 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
     {
         Dispose(false);
     }
-
 
     /// <summary>
     /// Tries to register the <see cref="NotifyIcon"/> in the shell.
@@ -311,6 +310,9 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
         // Without setting the handler window at the front, menu may appear behind the taskbar
         Interop.User32.SetForegroundWindow(HookWindow.Handle);
         ContextMenuService.SetPlacement(_contextMenu, PlacementMode.MousePoint);
+
+        var mainWindow = Application.Current.MainWindow;
+        _contextMenu.DataContext = mainWindow.DataContext;
 
         _contextMenu.ApplyMica();
         _contextMenu.IsOpen = true;
@@ -357,7 +359,7 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
         GC.SuppressFinalize(this);
     }
 
-    #endregion
+    #endregion General methods
 
     #region Protected methods
 
@@ -451,7 +453,7 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
         Unregister();
     }
 
-    #endregion
+    #endregion Protected methods
 
     #region Windows messages handler
 
@@ -542,7 +544,7 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
         return IntPtr.Zero;
     }
 
-    #endregion
+    #endregion Windows messages handler
 
     #region Private methods
 
@@ -558,5 +560,5 @@ public class NotifyIcon : System.Windows.FrameworkElement, INotifyIcon
         notifyIcon._contextMenu.FontSize = notifyIcon.MenuFontSize;
     }
 
-    #endregion
+    #endregion Private methods
 }

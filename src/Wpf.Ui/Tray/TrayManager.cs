@@ -64,7 +64,6 @@ internal static class TrayManager
         notifyIcon.HookWindow = RegisterIconInternal(ref shellIconData, notifyIcon.ParentHandle,
             notifyIcon.Id, notifyIcon.TooltipText, notifyIcon.Icon);
 
-
         notifyIcon.HookWindow.AddHook(notifyIcon.WndProc);
 
         TrayData.NotifyIcons.Add(notifyIcon);
