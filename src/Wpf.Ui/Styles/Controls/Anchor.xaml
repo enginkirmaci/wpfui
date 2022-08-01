@@ -3,7 +3,7 @@
     If a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.
     Copyright (C) Leszek Pomianowski and WPF UI Contributors.
     All Rights Reserved.
-    
+
     Based on Microsoft XAML for Win UI
     Copyright (c) Microsoft Corporation. All Rights Reserved.
 -->
@@ -170,17 +170,17 @@
                 </Setter>
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource TextOnAccentFillColorPrimary}" />
+                        <SolidColorBrush Color="{DynamicResource TextFillColorLightPrimary}" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="PressedForeground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource TextOnAccentFillColorSecondary}" />
+                        <SolidColorBrush Color="{DynamicResource TextFillColorLightSecondary}" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="IconForeground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource TextOnAccentFillColorPrimary}" />
+                        <SolidColorBrush Color="{DynamicResource TextFillColorLightPrimary}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -327,5 +327,4 @@
     </Style>
 
     <Style BasedOn="{StaticResource DefaultUiAnchorStyle}" TargetType="{x:Type controls:Anchor}" />
-
 </ResourceDictionary>
