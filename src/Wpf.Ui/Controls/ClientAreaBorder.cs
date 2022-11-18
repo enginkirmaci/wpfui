@@ -127,14 +127,14 @@ public class ClientAreaBorder : System.Windows.Controls.Border, IThemeControl
 
     private void OnWindowStateChanged(object? sender, EventArgs e)
     {
-        if (sender is not Window window)
-            return;
+        //if (sender is not Window window)
+        //    return;
 
-        Padding = window.WindowState switch
-        {
-            WindowState.Maximized => WindowChromeNonClientFrameThickness,
-            _ => default,
-        };
+        //Padding = window.WindowState switch
+        //{
+        //    WindowState.Maximized => WindowChromeNonClientFrameThickness,
+        //    _ => default,
+        //};
     }
 
     private void ApplyDefaultWindowBorder()

@@ -125,7 +125,6 @@ public class Dialog : System.Windows.Controls.ContentControl, IDialogControl
     public static readonly RoutedEvent ButtonRightClickEvent = EventManager.RegisterRoutedEvent(
         nameof(ButtonRightClick), RoutingStrategy.Bubble, typeof(Dialog), typeof(Dialog));
 
-
     /// <summary>
     /// Property for <see cref="ButtonRightAppearance"/>.
     /// </summary>
@@ -155,7 +154,7 @@ public class Dialog : System.Windows.Controls.ContentControl, IDialogControl
     public bool IsShown
     {
         get => (bool)GetValue(IsShownProperty);
-        protected set => SetValue(IsShownProperty, value);
+        set => SetValue(IsShownProperty, value);
     }
 
     /// <inheritdoc />
